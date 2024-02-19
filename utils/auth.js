@@ -1,4 +1,4 @@
-const { hash, compare } = require("bcrypt");
+import { compare, hash } from "bcryptjs";
 
 async function hashPassword(password) {
   const hashedPassword = await hash(password, 12);
