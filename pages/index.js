@@ -1,7 +1,11 @@
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 
 export default function Home() {
+  const logOutHandler = () => {
+    signOut();
+  };
+
   return (
     <>
       <h1>hello</h1>
@@ -14,6 +18,7 @@ export default function Home() {
       <button>
         <Link href="/dashboard">Dashboard</Link>
       </button>
+      <button onClick={logOutHandler}>Logout</button>
     </>
   );
 }
