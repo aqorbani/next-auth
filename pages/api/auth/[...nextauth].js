@@ -5,7 +5,7 @@ export const authOptions = {
   session: { strategy: "jwt" },
   providers: [
     CredentialsProvider({
-      name: "credentials",
+      name: "login",
       credentials: {
         email: {
           label: "Email",
