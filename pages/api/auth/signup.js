@@ -22,8 +22,8 @@ export default async function handler(req, res) {
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       return res
-        .status(402)
-        .json({ status: "failed", message: "User exist already!" });
+        .status(422)
+        .json({ status: "failed", message: "User already exist!" });
     } else {
       const hashedPassword = await hashPassword(password);
       const newUser = await User.create({
