@@ -21,7 +21,7 @@ export default function SignIn() {
       redirect: false,
     });
     if (!res.error) {
-      router.push("/dashboard");
+      window.location.href = "/dashboard";
     }
   };
 

@@ -1,7 +1,9 @@
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 export default function Home() {
+  const { status } = useSession();
+
   const logOutHandler = () => {
     signOut();
   };
@@ -9,16 +11,23 @@ export default function Home() {
   return (
     <>
       <h1>hello</h1>
-      <button>
-        <Link href="/signup">Sign Up</Link>
-      </button>
-      <button>
-        <Link href="/signin">Sign In</Link>
-      </button>
-      <button>
-        <Link href="/dashboard">Dashboard</Link>
-      </button>
-      <button onClick={logOutHandler}>Logout</button>
+      {status === "authenticated" ? (
+        <>
+          <button>
+            <Link href="/dashboard">Dashboard</Link>
+          </button>
+          <button onClick={logOutHandler}>Logout</button>
+        </>
+      ) : (
+        <>
+          <button>
+            <Link href="/signup">Sign Up</Link>
+          </button>
+          <button>
+            <Link href="/signin">Sign In</Link>
+          </button>
+        </>
+      )}
     </>
   );
 }
