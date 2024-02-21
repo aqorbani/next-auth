@@ -1,11 +1,14 @@
+import clientPromise from "@/lib/mongodb";
 import User from "@/models/User";
 import connectDB from "@/utils/ConnectDB";
 import { verifyPassword } from "@/utils/auth";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions = {
+  adapter: MongoDBAdapter(clientPromise),
   session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
