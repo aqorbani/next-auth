@@ -8,6 +8,10 @@ export default function Home() {
     signOut();
   };
 
+  const signInHandlerGitHub = () => {
+    signIn("github");
+  };
+
   return (
     <>
       <h1>hello</h1>
@@ -26,6 +30,7 @@ export default function Home() {
           <button>
             <Link href="/signin">Sign In</Link>
           </button>
+          <button onClick={signInHandlerGitHub}>github</button>
         </>
       )}
     </>
